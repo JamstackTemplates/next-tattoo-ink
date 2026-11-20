@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
-import { documentHref, isContactRoute, route } from '../lib/paths';
+import { documentHref, isContactRoute, route, routePathname } from '../lib/paths';
 
 type SiteLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
-  /** Site route such as /work/ or /work/tidepool/ (without the base path). */
+  /** Site route such as /artists/ or /artists/?style=traditional (without the base path). */
   href: string;
   children: ReactNode;
-  /** Mark as the current page when the route matches (navigation links). */
+  /** Mark as the current page or section when the route matches (navigation links). */
   markCurrent?: 'page' | 'section';
 };
 
@@ -23,14 +23,27 @@ type SiteLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
 export function SiteLink({ href, children, markCurrent, ...rest }: SiteLinkProps) {
   const pathname = usePathname();
   const target = route(href);
-  const current = route(pathname || '/');
-  const isCurrent = markCurrent === 'page' ? current === target
-    : markCurrent === 'section' ? current === target || current.startsWith(target)
-    : false;
-  const ariaCurrent = isCurrent ? (current === target ? 'page' : 'true') : undefined;
+  const targetPath = routePathname(target);
+  const currentPath = routePathname(pathname || '/');
 
-  if (isContactRoute(target) || isContactRoute(current)) {
-    return <a href={documentHref(target)} aria-current={ariaCurrent} {...rest}>{children}</a>;
+  const isCurrent =
+    markCurrent === 'page'
+      ? currentPath === targetPath
+      : markCurrent === 'section'
+        ? currentPath === targetPath || (targetPath !== '/' && currentPath.startsWith(targetPath))
+        : false;
+  const ariaCurrent = isCurrent ? (currentPath === targetPath ? 'page' : 'true') : undefined;
+
+  if (isContactRoute(target) || isContactRoute(currentPath)) {
+    return (
+      <a href={documentHref(target)} aria-current={ariaCurrent} {...rest}>
+        {children}
+      </a>
+    );
   }
-  return <Link href={target} aria-current={ariaCurrent} {...rest}>{children}</Link>;
+  return (
+    <Link href={target} aria-current={ariaCurrent} {...rest}>
+      {children}
+    </Link>
+  );
 }

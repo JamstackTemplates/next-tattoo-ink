@@ -1,0 +1,22 @@
+{
+  "templateId": "next-tattoo-ink",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullPage": false,
+  "captures": [
+    {
+      "mode": "light",
+      "sha256": "40587a606af6229161e388f1e720ce068ff0c54a886868f4a99fe21718efe7f4",
+      "file": "jamstacks/home-light.jpg",
+      "bytes": 113270
+    },
+    {
+      "mode": "dark",
+      "sha256": "8888f4a2cc0855c3907afdbbd5ce8fdcad3ec7c1243cdef583ba7a4d9a9ab6f7",
+      "file": "jamstacks/home-dark.jpg",
+      "bytes": 113351
+    }
+  ]
+}

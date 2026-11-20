@@ -1,7 +1,8 @@
 {
-  "name": "Jamstacks starter",
-  "description": "A neutral Next.js foundation for Jamstacks websites.",
-  "domain": "",
+  "name": "Midnight Needle Tattoo",
+  "description": "Midnight Needle Tattoo — custom and flash tattooing on Capitol Hill, Seattle. Four artists, traditional to fine-line, walk-in flash Fridays and Saturdays.",
+  "domain": "next-tattoo-ink.jamstacks.net",
+  "timeZone": "America/Los_Angeles",
   "jamstacks": {
     "siteId": "",
     "cdnUrl": "https://cdn.jamstacks.net"

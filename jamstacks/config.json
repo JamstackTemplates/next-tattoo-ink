@@ -1,0 +1,19 @@
+{
+  "name": "Midnight Needle Tattoo",
+  "description": "A dark blackwork theme for tattoo studios: blackletter and red neon, a hard-grid flash wall printed bone-on-black with claimed stamps, artist portfolios with style filters, a day-by-day aftercare card, a clear deposit policy and a Jamstacks contact component for booking enquiries.",
+  "tech": "next",
+  "type": "tattoo",
+  "style": "ink",
+  "internal": false,
+  "components": [
+    "support-form"
+  ],
+  "configFile": "site.config.json",
+  "screenshots": {
+    "light": "jamstacks/home-light.jpg",
+    "dark": "jamstacks/home-dark.jpg",
+    "theme": {
+      "strategy": "media"
+    }
+  }
+}
